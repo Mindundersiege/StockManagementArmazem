@@ -5,19 +5,12 @@
 Neste repositório encontra-se o projeto StockManagement na instância de Armazém feito na disciplina ***Projeto Detalhado de Software*** do bacharelado de _Tecnologia da Informação_ ( **UFRN** ).
 
 - [Sobre o StockManagement](#sobre-o-stockmanagement) - Informações sobre a aplicação denominada Library Manage. 
-- [Links de referência](#links-de-referência) - Links relacionados ao projeto.
 - [Autores](#autores) - Autores que trabalharam no projeto.
 
 
 ## Sobre o StockManagement  
 
 Trata-se de um sistema de controle de estoque que gerencia o inventário de Armazém e provê informações sobre a quantidade e disponsabilidade, além de incluir um sitema de rankings.
-  
-## Links de referência 
-
-<p align="left">
-<a href="https://junit.org/junit5/"><img src="https://cdn-images-1.medium.com/max/982/1*AiTBjfsoj3emarTpaeNgKQ.png" width="14%"  />
-</p>
 
 ## Autores 
 
