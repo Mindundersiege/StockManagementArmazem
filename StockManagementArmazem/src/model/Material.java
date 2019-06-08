@@ -36,7 +36,7 @@ public abstract class Material implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    protected Long id;
 
     @Column(nullable = true)
     private int quantidade;
