@@ -1,30 +1,36 @@
 package service;
 
+/**
+ *
+ * @author Thiago
+ */
+
+import service.raqueamento.IRankingUsuarioStrategy;
 import service.validacao.ValidacaoUsuario;
-import service.ranqueamento.IRankingUsuarioStrategy;
 import java.util.List;
 
 import dao.ClienteDAOJDBC;
 import dao.ClienteDAOJDBC;
 import exception.ServiceException;
-import model.ClienteFisicoF;
-import model.UsuarioF;
+import model.tiposUsuario.ClienteFisico;
+import model.Usuario;
+import service.bloqueio.BloqueioUsuario;
 
 //Revisar classe!
 
-public class ClienteService extends UsuarioService{
+public class ClienteFisicoService extends UsuarioService{
 
-	ClienteService(){
-		this.usuarioDAO = new ClienteDAOJDBC();
+	ClienteFisicoService(){
+		this.usuarioDAO = new ClienteFisicoDAOJDBC();
 	}
 	
 	@Override
-	public String adicionar(UsuarioF usuario) {
+	public String adicionar(Usuario usuario) {
 	
-		ClienteFisicoF cliente = (ClienteFisicoF) usuario;
+		ClienteFisico clienteFisico = (ClienteFisico) usuario;
 		
 		try {	
-			usuarioDAO.adicionar(cliente);
+			usuarioDAO.adicionar(clienteFisico);
 		}catch( ServiceException serExc ) {
 			return serExc.getMessage();
 		}
@@ -33,12 +39,12 @@ public class ClienteService extends UsuarioService{
 	}
 
 	@Override
-	public String alterar(UsuarioF usuario, UsuarioF usuarioAlterado) {
+	public String alterar(Usuario usuario, Usuario usuarioAlterado) {
 
-		ClienteFisicoF cliente = (ClienteFisicoF) usuario;
+		ClienteFisico clienteFisico = (ClienteFisico) usuario;
 		
 		try {	
-			usuarioDAO.alterar(cliente);
+			usuarioDAO.alterar(clienteFisico);
 		}catch( ServiceException serExc ) {
 			return serExc.getMessage();
 		}
@@ -47,11 +53,11 @@ public class ClienteService extends UsuarioService{
 	}
 
 	@Override
-	public String remover(UsuarioF usuario) {
-		ClienteFisicoF cliente = (ClienteFisicoF) usuario;
+	public String remover(Usuario usuario) {
+		ClienteFisico clienteFisico = (ClienteFisico) usuario;
 		
 		try {	
-			usuarioDAO.remover(cliente);
+			usuarioDAO.remover(clienteFisico);
 		}catch( ServiceException serExc ) {
 			return serExc.getMessage();
 		}
@@ -60,10 +66,10 @@ public class ClienteService extends UsuarioService{
 	}
 
 	@Override
-	public String consultar(UsuarioF usuario) {
+	public String consultar(Usuario usuario) {
 
 		try {	
-			ClienteFisicoF cliente = (ClienteFisicoF) usuarioDAO.consultar(cliente.getIdUsuario());
+			ClienteFisico clienteFisico = (ClienteFisico) usuarioDAO.consultar(clienteFisico.getIdUsuario());
 		}catch( ServiceException serExc ) {
 			return serExc.getMessage();
 		}
@@ -84,7 +90,7 @@ public class ClienteService extends UsuarioService{
 	}
 
 	@Override
-	public String bloquear(UsuarioF Usuario, BloqueioUsuario bloqueioUsuario, String causa) {
+	public String bloquear(Usuario Usuario, BloqueioUsuario bloqueioUsuario, String causa) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -96,7 +102,7 @@ public class ClienteService extends UsuarioService{
 	}
 
 	@Override
-	public String validacao(UsuarioF usuario, ValidacaoUsuario validacaoUsuario) {
+	public String validacao(Usuario usuario, ValidacaoUsuario validacaoUsuario) {
 		// TODO Auto-generated method stub
 		return null;
 	}

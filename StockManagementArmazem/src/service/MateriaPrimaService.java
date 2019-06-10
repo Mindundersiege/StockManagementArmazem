@@ -1,27 +1,32 @@
 package service;
 
+/**
+ *
+ * @author Thiago
+ */
+
+import service.raqueamento.IRankingMaterialStrategy;
 import service.validacao.ValidacaoMaterial;
-import service.ranqueamento.IRankingMaterialStrategy;
 import java.util.List;
 
-import dao.LivroDAOJPA;
-import model.MaterialF;
-import model.Livro;
+import model.Material;
 import exception.ServiceException;
+import model.tiposMaterial.MateriaPrima;
+import service.bloqueio.BloqueioMaterial;
 
-public class LivroService extends MaterialService{
+public class MateriaPrimaService extends MaterialService{
 
-	LivroService(){
-		this.materialDAO = new LivroDAOJPA();
+	MateriaPrimaService(){
+		this.materialDAO = new MateriaPrimaDAOJPA();
 	}
 	
 	@Override
-	public String adicionar(MaterialF material) {
+	public String adicionar(Material material) {
 
-		Livro livro = (Livro) material;
+		MateriaPrima materiaPrima = (MateriaPrima) material;
 		
 		try {	
-			materialDAO.adicionar(livro);
+			materialDAO.adicionar(materiaPrima);
 		}catch( ServiceException serExc ) {
 			return serExc.getMessage();
 		}
@@ -30,12 +35,12 @@ public class LivroService extends MaterialService{
 	}
 
 	@Override
-	public String alterar(MaterialF material, MaterialF materialAlterado) {
+	public String alterar(Material material, Material materialAlterado) {
 		
-		Livro livro = (Livro) material;
+		MateriaPrima materiaPrima = (MateriaPrima) material;
 		
 		try {	
-			materialDAO.alterar(livro);
+			materialDAO.alterar(materiaPrima);
 		}catch( ServiceException serExc ) {
 			return serExc.getMessage();
 		}
@@ -44,11 +49,11 @@ public class LivroService extends MaterialService{
 	}
 
 	@Override
-	public String remover(MaterialF material) {
-		Livro livro = (Livro) material;
+	public String remover(Material material) {
+		MateriaPrima materiaPrima = (MateriaPrima) material;
 		
 		try {	
-			materialDAO.remover(livro);
+			materialDAO.remover(materiaPrima);
 		}catch( ServiceException serExc ) {
 			return serExc.getMessage();
 		}
@@ -57,10 +62,10 @@ public class LivroService extends MaterialService{
 	}
 
 	@Override
-	public String consultar(MaterialF material) {
+	public String consultar(Material material) {
 		
 		try {	
-			Livro livro = (Livro) materialDAO.consultar(livro.getIdMaterial());
+			MateriaPrima materiaPrima = (MateriaPrima) materialDAO.consultar(materiaPrima.getIdMaterial());
 		}catch( ServiceException serExc ) {
 			return serExc.getMessage();
 		}
@@ -83,7 +88,7 @@ public class LivroService extends MaterialService{
 	}
 
 	@Override
-	public String bloquear(MaterialF material, BloqueioMaterial bloqueioMaterial, String causa) {
+	public String bloquear(Material material, BloqueioMaterial bloqueioMaterial, String causa) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -95,7 +100,7 @@ public class LivroService extends MaterialService{
 	}
 
 	@Override
-	public String validacao(MaterialF material, ValidacaoMaterial validacaoMaterial) {
+	public String validacao(Material material, ValidacaoMaterial validacaoMaterial) {
 		// TODO Auto-generated method stub
 		return null;
 	}

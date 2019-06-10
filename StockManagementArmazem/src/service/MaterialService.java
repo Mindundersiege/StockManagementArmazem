@@ -1,10 +1,11 @@
 package service;
 
+import service.raqueamento.IRankingMaterialStrategy;
 import service.validacao.ValidacaoMaterial;
-import service.ranqueamento.IRankingMaterialStrategy;
-import model.MaterialF;
+import model.Material;
 import dao.IMaterialDAO;
 import java.util.List;
+import service.bloqueio.BloqueioMaterial;
 
 public abstract class MaterialService {
 
@@ -14,22 +15,22 @@ public abstract class MaterialService {
 
 	/// MÉTODOS
 
-	public abstract String adicionar(MaterialF material);
+	public abstract String adicionar(Material material);
 
-	public abstract String alterar(MaterialF material, MaterialF materialAlterado);
+	public abstract String alterar(Material material, Material materialAlterado);
 
-	public abstract String remover(MaterialF material);
+	public abstract String remover(Material material);
 
-	public abstract String consultar(MaterialF material);
+	public abstract String consultar(Material material);
 
 	public abstract List<String> consultarTodos();
 
 	public abstract List<String> consultaEspecifica(List<String> params, List<String> keys);
 
-	public abstract String bloquear(MaterialF material, BloqueioMaterial bloqueioMaterial, String causa);
+	public abstract String bloquear(Material material, BloqueioMaterial bloqueioMaterial, String causa);
 
 	public abstract List<String> ranquear(IRankingMaterialStrategy rankingMaterial);
 
-	public abstract String validacao(MaterialF material, ValidacaoMaterial validacaoMaterial);
+	public abstract String validacao(Material material, ValidacaoMaterial validacaoMaterial);
 
 }

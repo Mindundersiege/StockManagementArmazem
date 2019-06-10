@@ -1,36 +1,80 @@
 package service;
 
+/**
+ *
+ * @author Thiago
+ */
+
 import service.raqueamento.IRankingUsuarioStrategy;
 import service.validacao.ValidacaoUsuario;
 import java.util.List;
 
+import dao.ClienteDAOJDBC;
+import dao.ClienteDAOJDBC;
+import exception.ServiceException;
 import model.Usuario;
+import model.tiposUsuario.ClienteJuridico;
 import service.bloqueio.BloqueioUsuario;
 
-public class OperadorService extends UsuarioService {
+//Revisar classe!
 
+public class ClienteJuridicoService extends UsuarioService{
+
+	ClienteJuridicoService(){
+		this.usuarioDAO = new ClienteJuridicoDAOJDBC();
+	}
+	
 	@Override
 	public String adicionar(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+	
+		ClienteJuridico clienteJuridico = (ClienteJuridico) usuario;
+		
+		try {	
+			usuarioDAO.adicionar(clienteJuridico);
+		}catch( ServiceException serExc ) {
+			return serExc.getMessage();
+		}
+		
+		return "OK";
 	}
 
 	@Override
 	public String alterar(Usuario usuario, Usuario usuarioAlterado) {
-		// TODO Auto-generated method stub
-		return null;
+
+		ClienteJuridico clienteJuridico = (ClienteJuridico) usuario;
+		
+		try {	
+			usuarioDAO.alterar(clienteJuridico);
+		}catch( ServiceException serExc ) {
+			return serExc.getMessage();
+		}
+		
+		return "OK";
 	}
 
 	@Override
 	public String remover(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+		ClienteJuridico clienteJuridico = (ClienteJuridico) usuario;
+		
+		try {	
+			usuarioDAO.remover(clienteJuridico);
+		}catch( ServiceException serExc ) {
+			return serExc.getMessage();
+		}
+		
+		return "OK";
 	}
 
 	@Override
 	public String consultar(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return null;
+
+		try {	
+			ClienteJuridico clienteJuridico = (ClienteJuridico) usuarioDAO.consultar(clienteJuridico.getIdUsuario());
+		}catch( ServiceException serExc ) {
+			return serExc.getMessage();
+		}
+		
+		return "OK";
 	}
 
 	@Override

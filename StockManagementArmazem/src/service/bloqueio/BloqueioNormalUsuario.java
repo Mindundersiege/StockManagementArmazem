@@ -1,9 +1,8 @@
-package service;
+package service.bloqueio;
 
 import model.StatusSM;
-import model.UsuarioF;
+import model.Usuario;
 import dao.IUsuarioDAO;
-import exception.DAOException;
 import exception.ServiceException;
 
 public class BloqueioNormalUsuario extends BloqueioUsuario {
@@ -13,7 +12,7 @@ public class BloqueioNormalUsuario extends BloqueioUsuario {
 	 * @throws ServiceException 
 	 * @see service.BloqueioUsuario#bloquear(Model.Usuario, dao.IUsuarioDAO, Model.String)
 	 */
-	public void bloquear(UsuarioF usuario, IUsuarioDAO usuarioDAO, String causa) throws DAOException {
+	public void bloquear(Usuario usuario, IUsuarioDAO usuarioDAO, String causa) throws ServiceException {
 		if(usuario.getStatus().equals(StatusSM.Permanente)) throw new ServiceException("ERRO: Usuarios bloqueados permanentemente não podem ter seu status alterado!");		
 		
 		else{		

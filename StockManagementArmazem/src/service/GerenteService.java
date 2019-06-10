@@ -1,5 +1,10 @@
 package service;
 
+/**
+ *
+ * @author Thiago
+ */
+
 import service.raqueamento.IRankingUsuarioStrategy;
 import service.validacao.ValidacaoUsuario;
 import java.util.List;
@@ -7,7 +12,7 @@ import java.util.List;
 import model.Usuario;
 import service.bloqueio.BloqueioUsuario;
 
-public class OperadorService extends UsuarioService {
+public class GerenteService extends UsuarioService {
 
 	@Override
 	public String adicionar(Usuario usuario) {

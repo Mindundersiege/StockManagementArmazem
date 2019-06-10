@@ -1,6 +1,6 @@
-package service;
+package service.bloqueio;
 
-import model.UsuarioF;
+import model.Usuario;
 import dao.IUsuarioDAO;
 import model.StatusSM;
 
@@ -12,7 +12,7 @@ public class BloqueioPermanenteUsuario extends BloqueioUsuario {
 	/**
 	 * @see service.BloqueioUsuario#bloquear(Model.Usuario, dao.IUsuarioDAO, Model.String)
 	 */
-	public void bloquear(UsuarioF usuario, IUsuarioDAO usuarioDAO, String causa) {
+	public void bloquear(Usuario usuario, IUsuarioDAO usuarioDAO, String causa) {
 		usuario.setStatus( StatusSM.Permanente );
 		usuario.setCausa( causa );
 		usuarioDAO.alterar( usuario );

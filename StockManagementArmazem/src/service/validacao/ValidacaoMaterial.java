@@ -1,36 +1,61 @@
 package service.validacao;
 
-/// CLASSES PRÓPRIAS
 import model.Material;
 import exception.ServiceException;
-import model.Data;
+import model.StatusSM;
 
-/**
- * Validação dos campos da classe material
- * @see Material
- * @see ServiceException
- */
-public class ValidacaoMaterial {
-    
+public abstract class ValidacaoMaterial {
+
+	/// MÉTODOS
+
     /**
-     * Valida os campos de um material
-     * @param material  Material cujos campos serão validados
-     * @return  String contendo ok caso bem sucedido. Caso contrário, lança-se uma excessão
-     * @throws ServiceException 
+     * Método responsável por válidar todos os atributos da classe material!
+     * @param material material que irá passar pela validação.  
+     * @return Retorna uma String que representa a situação da validação. 
+     * @throws ServiceException Dá suporte a indicação de problemas relacionados
+     * a validação.
      */
-    public String validacao( Material material ) throws ServiceException {
-        
-        int quantidade = material.getQuantidade();
-        String causa = material.getCausa();
-        double valorUnitario = material.getValorUnitario();
-        Data dataEntrada = material.getDataEntrada();
-        
-        if( quantidade < 0)
-            throw new ServiceException("Quantidade de material nao pode ser negativa");
-        if( valorUnitario < 0)
-            throw new ServiceException("Valor unitario de um material nao pode ser negativa");
+    public String validacao(Material material) throws ServiceException{
+
+        if(material.getId() < 0){
+            throw new ServiceException("Material criado com ID errado!");
+        }
+
+        if((material.getStatus() == StatusSM.NaoBloqueado && 
+                !material.getCausa().equals(" "))
+                ||
+                (material.getStatus() != StatusSM.NaoBloqueado &&
+                material.getCausa().equals(" "))){
+            throw new 
+            ServiceException("Material possui status ou causa indevida!");
+
+        }
+
+//        if(material.getDataEntrada() == null){
+//         throw new ServiceException("Material criado sem data de entrada!");
+//        }
+
+        if(material.getQuantidade() < 0){
+            throw new 
+            ServiceException("Material criado com quantidade inválida!");
+        }
+
+        if(material.getValorUnitario() < 0){
+            throw new 
+            ServiceException("Material criado com valor unitário inválido!");
+        }
+
+        validacaoImplementacao(material);
         
         return "OK";
     }
 
+    /**
+     * Método responsável por validar todos os atributos da classe especilizada
+     * de material!
+     * @param material Material que irá passar pela validação.
+     * @throws ServiceException Dá suporte a indicação de problemas relacionados
+     * a validação.
+     */
+    protected abstract void validacaoImplementacao(Material material) throws ServiceException;
 }
