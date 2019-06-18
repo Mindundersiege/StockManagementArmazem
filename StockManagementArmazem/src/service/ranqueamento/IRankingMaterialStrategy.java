@@ -2,19 +2,20 @@ package service.ranqueamento;
 
 import java.util.List;
 
-/// CLASSES PRÓPRIAS
+/// CLASSE PRÓPRIA
 import model.Material;
 
 /**
- * Interface de ranquemento de materiais 
+ * Interface de algoritmos de ranqueamento de material
  * @see Material
+ * @see List
  */
 public interface IRankingMaterialStrategy {
 
     /**
-     * Ordenamento da lista de materiais
+     * Ordena lista de materiais
      * @param materiais Lista de materiais a serem ordenados
-     * @return Lista reordenada
+     * @return  Lista de materiais reordenada 
      */
     public List<Material> ranquear(List<Material> materiais);
 

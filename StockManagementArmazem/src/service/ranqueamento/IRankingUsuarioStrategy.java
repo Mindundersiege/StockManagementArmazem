@@ -2,19 +2,20 @@ package service.ranqueamento;
 
 import java.util.List;
 
-/// CLASSES PRÓPRIAS
+/// CLASSE PRÓPRIA
 import model.Usuario;
 
 /**
- * Interface de ranquemento de usuários 
+ * Interface de algoritmos de ranqueamento de usuários
  * @see Usuario
+ * @see List
  */
 public interface IRankingUsuarioStrategy {
-    
+
     /**
-     * Ordenamento da lista de usuarios
-     * @param usuarios  Lista de usuarios a serem ordenados
-     * @return Lista reordenada
+     * Ordena lista de usuarios
+     * @param usuarios Lista de usuários a serem ordenados
+     * @return  Lista de usuários reordenada 
      */
     public List<Usuario> ranquear(List<Usuario> usuarios);
 

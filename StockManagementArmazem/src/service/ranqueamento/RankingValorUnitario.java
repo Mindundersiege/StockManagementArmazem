@@ -1,12 +1,17 @@
+
 package service.ranqueamento;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/// CLASSES PRÓPRIAS
+/// CLASSE PRÓPRIA
 import model.Material;
 
+/**
+ * Classe de ranqueamento por meio do valor unitário de material
+ * @see IRankingMaterialStrategy
+ */
 public class RankingValorUnitario implements IRankingMaterialStrategy {
 
     public class MaterialValorUnitario implements Comparator<Material>{
@@ -25,7 +30,7 @@ public class RankingValorUnitario implements IRankingMaterialStrategy {
     }
 
     /// MÉTODOS **********************************************************************************
-
+	
     @Override
     public List<Material> ranquear(List<Material> materiais) {
         Collections.sort( materiais, new MaterialValorUnitario() );

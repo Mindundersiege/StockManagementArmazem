@@ -7,8 +7,10 @@ import java.util.List;
 /// CLASSES PRÓPRIAS
 import model.Material;
 
-//Revisar classe!
-
+/**
+ * Classe de ranqueamento por meio da data de entrada de material
+ * @see IRankingMaterialStrategy
+ */
 public class RankingDataEntrada implements IRankingMaterialStrategy {
 
     public class MaterialDataEntrada implements Comparator<Material>{
@@ -19,7 +21,7 @@ public class RankingDataEntrada implements IRankingMaterialStrategy {
     }
 
     /// MÉTODOS **********************************************************************************
-    
+  	
     @Override
     public List<Material> ranquear(List<Material> materiais) {
         Collections.sort( materiais, new MaterialDataEntrada() );

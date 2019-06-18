@@ -4,13 +4,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/// CLASSES PRÓPRIAS
+/// CLASSE PRÓPRIA
 import model.Usuario;
 
+/**
+ * Classe de ranqueamento por meio da quantidade de movimentações de usuário
+ * @see IRankingUsuarioStrategy
+ * @see Collections
+ * @see Comparator
+ */
 public class RankingQuantidadeMovimentacao implements IRankingUsuarioStrategy {
 
     public class UsuarioQuantidadeMovimentacao implements Comparator<Usuario>{
-
         @Override
         public int compare( Usuario usuario_1, Usuario usuario_2 ){
 
@@ -27,7 +32,7 @@ public class RankingQuantidadeMovimentacao implements IRankingUsuarioStrategy {
     }
 
     /// MÉTODOS **********************************************************************************
-    
+  	
     @Override
     public List<Usuario> ranquear(List<Usuario> usuarios) {
         Collections.sort( usuarios, new UsuarioQuantidadeMovimentacao() );
